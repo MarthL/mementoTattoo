@@ -31,6 +31,12 @@ app.get('/tattoos', (req, res, next) => {
     .catch(error => res.json(error))
 });
 
+app.get("/tattoos/:tattoosId", (req, res) => { 
+    Tattoos.find({ _id: req.params.tattoosId})
+    .then(data => res.json(data))
+    .catch(error => res.json(error))
+})
+
 app.post("/", (req, res) => { 
     new Tattoos({ 
         'name': req.body.name,
@@ -39,3 +45,15 @@ app.post("/", (req, res) => {
     .then(data => res.json(data))
     .catch(error => res.json(error))
 });
+
+app.patch('/tattoos/:tattoosId', (req, res) => { 
+    Tattoos.findOneAndUpdate({_id: req.params.listId}, {$set: req.body})
+        .then(data => res.json(data))
+        .catch(error => res.json(error))
+})
+
+app.delete('/tattoos/:tattoosId', (req, res) => { 
+    Tattoos.findOneAndDelete(req.params.tattoosId)
+        .then(data => res.json(data))
+        .catch(error => res.json(error))
+})
