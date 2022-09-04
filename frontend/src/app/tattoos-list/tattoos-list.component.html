@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="mt-5">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col center"> <p class="text-center"> Actions </p> </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let tattoo of tattoos">
+              <tr>
+                <th scope="row">{{tattoo.id}}</th>
+                <td>{{tattoo.name}}</td>
+                <td>{{tattoo.description}}</td>
+                <td> <p class="text-center"> <span class="btn btn-primary ml-2 mr-2">Edit</span> <span class="btn btn-danger ml-2 mr-2">Delete</span> </p> </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="container">
+      <a routerLink="/"> <div class="btn btn-success d-flex justify-content-center">  <span class="text-white"> Retour </span></div> </a>
+    </div>
+</div>
