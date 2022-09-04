@@ -1,0 +1,83 @@
+@media screen and (max-width: 788px) { 
+    .navbar-brand { 
+        display: none;
+    }
+
+    .navbar-toggler-icon { 
+        font-size: 20px;
+    }
+
+    li a { 
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 789px) { 
+    .navbar-brand { 
+        display: block;
+    }
+
+    .navbar-brand { 
+        font-family: arizoniaFont;
+        font-size: 3rem;
+    }
+
+    .navbar-toggler { 
+        border-color: #E4CCAA;
+    }
+
+    .navbar-toggler-icon { 
+        height: 60px;
+        width: 60px;
+    }
+
+    .nav-item { 
+        font-size: 1.5rem;
+    }
+
+    .changestyle { 
+        background-image: url(../../assets/img/star.svg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 3;
+    }
+
+}
+
+@keyframes navbar { 
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+ul { 
+    /* background-color: rgba(0, 0, 0, 0.39); */
+    background-image: url(../../assets/img/flash_board.jpg);
+    border-radius: 20px;
+}
+
+li a { 
+    font-family: oleoScriptBold;
+    font-size: 2rem;
+}
+
+.nav-link {
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 300ms, text-underline-offset 
+}
+
+.nav-link:hover {
+    text-decoration-color: rgb(255, 255, 255);
+    text-underline-offset: 0.4em;
+
+}
+
+.navbar { 
+    margin-right: 50px;
+}
+
+.show { 
+    animation-name: navbar;
+    animation-duration: 2s;
+}

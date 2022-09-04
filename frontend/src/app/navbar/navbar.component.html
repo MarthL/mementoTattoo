@@ -1,0 +1,24 @@
+<nav class="navbar navbar-light mt-5 mb-5">
+    <div class="container-fluid">
+      <button class="navbar-toggler" (click)="toggleDisplay()" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" [class.changestyle]="check"></span>
+      </button>
+      <a class="navbar-brand" href="#">Memento Tattoo</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngClass]="{'show': check === true}" >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-3 pl-5">
+          <li class="nav-item">
+            <a routerLink='/' class="nav-link text-dark font-weight-bold" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink='/tattoos' class="nav-link text-dark font-weight-bold" href="">List of tattoos</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink='/questions' class="nav-link text-dark font-weight-bold" href="#">Q & A</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink='/contact' class="nav-link text-dark font-weight-bold" href="#">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
