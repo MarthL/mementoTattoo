@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { TattoosListComponent } from './tattoos-list/tattoos-list.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AddTattooComponent } from './add-tattoo/add-tattoo.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     TattoosListComponent,
     HomeComponent,
     NavbarComponent,
+    AddTattooComponent,
   ],
   imports: [
     BrowserModule,
