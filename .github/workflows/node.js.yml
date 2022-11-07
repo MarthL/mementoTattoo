@@ -27,10 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./frontend/package-lock.json
-    - name: file location 
-      run: cd ./frontend && ls 
-    - name: npm dependencies
-      run: npm install
+    - name: file location & install dependancies
+      run: cd ./frontend && ls && npm install 
     - name: build 
       run: npm run build
       working-directory: ./frontend
