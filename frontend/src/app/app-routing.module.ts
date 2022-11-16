@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { TattoosListComponent } from './tattoos-list/tattoos-list.component';
 import { HttpClientModule }  from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { AddTattooComponent } from './add-tattoo/add-tattoo.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
-  { path: 'tattoos', component: TattoosListComponent}
+  { path: 'tattoos', component: TattoosListComponent},
+  { path: 'tattoos/add', component: AddTattooComponent}
 ];
 
 @NgModule({
