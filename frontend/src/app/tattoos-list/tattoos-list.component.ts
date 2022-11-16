@@ -26,6 +26,7 @@ export class TattoosListComponent implements OnInit {
       console.log('error' + error)
     });
   }
+
   
 
 }

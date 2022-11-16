@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TattoosService } from '../tattoos.service';
 
 @Component({
   selector: 'app-add-tattoo',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTattooComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  myForm: FormGroup;
+  tattoo: any;
+
+
+  constructor(private fb: FormBuilder, private tattooService: TattoosService) {
+    let self = this
+
+    this.myForm = this.fb.group({
+      tattoo: '',
+      description: ''
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  sendForm() { 
+    const formValue = this.myForm.value 
+    console.log(formValue)
+    this.tattooService.post('', formValue).subscribe((data)=> { 
+      this.tattoo = data; 
+      return this.tattoo
+    })
+    
   }
 
 }

@@ -37,7 +37,7 @@ app.get("/tattoos/:tattoosId", (req, res) => {
     .catch(error => res.json(error))
 })
 
-app.post("/", (req, res) => { 
+app.post("/tattoos", (req, res) => { 
     new Tattoos({ 
         'name': req.body.name,
         'description': req.body.description

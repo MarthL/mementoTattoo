@@ -1,1 +1,9 @@
-<p>add-tattoo works!</p>
+<div class="container">
+    <form [formGroup]="myForm" (ngSubmit)="sendForm()">
+
+        <input type="text" placeholder="Tattoo name" formControlName="tattoo">
+        <input type="text" placeholder="description" formControlName="description">
+
+        <input type="submit" placeholder="Envoyer">
+    </form>
+</div>

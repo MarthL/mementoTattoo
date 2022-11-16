@@ -4,6 +4,7 @@ import { TattoosListComponent } from './tattoos-list/tattoos-list.component';
 import { HttpClientModule }  from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AddTattooComponent } from './add-tattoo/add-tattoo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+
   ],
   exports: [RouterModule]
 })
