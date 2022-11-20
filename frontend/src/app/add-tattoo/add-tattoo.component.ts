@@ -18,7 +18,7 @@ export class AddTattooComponent implements OnInit {
     let self = this
 
     this.myForm = this.fb.group({
-      tattoo: '',
+      name: '',
       description: ''
     });
   }

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const TattoosSchema = new mongoose.Schema({ 
-    tattoos: { 
+    name: { 
         type: String, 
     },
     description: { 
