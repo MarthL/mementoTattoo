@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TattoosSchema = new mongoose.Schema({ 
+const TattoosSchema = new mongoose.Schema({
     name: { 
         type: String, 
     },

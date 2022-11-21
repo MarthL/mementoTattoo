@@ -8,7 +8,7 @@ const Tattoos = require('./database/models/tattoos');
 // enable CORS Cross Origin Request Security
 app.use((req, res, next) => { 
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH , DEL");
+    res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH , DELETE");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 })
@@ -53,7 +53,7 @@ app.patch('/tattoos/:tattoosId', (req, res) => {
 })
 
 app.delete('/tattoos/:tattoosId', (req, res) => { 
-    Tattoos.findOneAndDelete(req.params.tattoosId)
+    Tattoos.deleteOne({"_id": req.params.tattoosId})
         .then(data => res.json(data))
         .catch(error => res.json(error))
 })
