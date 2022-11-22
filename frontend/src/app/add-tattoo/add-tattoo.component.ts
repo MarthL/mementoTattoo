@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { TattoosService } from '../tattoos.service';
+import { TattoosService } from '../_services/tattoos.service';
 
 @Component({
   selector: 'app-add-tattoo',
@@ -33,7 +33,7 @@ export class AddTattooComponent implements OnInit {
       this.tattoo = data; 
       return this.tattoo
     })
-    
   }
 
+  
 }

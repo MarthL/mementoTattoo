@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TattoosService } from '../tattoos.service';
+import { TattoosService } from '../_services/tattoos.service';
 
 @Component({
   selector: 'app-tattoos-list',
@@ -38,8 +38,12 @@ export class TattoosListComponent implements OnInit {
     }, (error) => { 
       console.log('error : ' + error)
     })
+    this.reloadPage()
   }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
   
 
 }

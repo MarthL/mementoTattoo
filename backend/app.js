@@ -2,8 +2,8 @@ const express = require('express');
 const app = express(); 
 const mongoose = require('./database/mongoose');
 
-const List = require('./database/models/list');
 const Tattoos = require('./database/models/tattoos');
+const User = require('./database/models/users');
 
 // enable CORS Cross Origin Request Security
 app.use((req, res, next) => { 
@@ -50,10 +50,14 @@ app.patch('/tattoos/:tattoosId', (req, res) => {
     Tattoos.findOneAndUpdate({_id: req.params.listId}, {$set: req.body})
         .then(data => res.json(data))
         .catch(error => res.json(error))
-})
+});
 
 app.delete('/tattoos/:tattoosId', (req, res) => { 
     Tattoos.deleteOne({"_id": req.params.tattoosId})
         .then(data => res.json(data))
         .catch(error => res.json(error))
+});
+
+app.post('/login', (req, res) => { 
+    // silence is golden
 })
