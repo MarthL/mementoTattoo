@@ -8,7 +8,9 @@ import { TattoosService } from '../tattoos.service';
 })
 export class TattoosListComponent implements OnInit {
 
-  public tattoos:any = [];
+  public tattoos: any = [];
+
+  
   constructor(private tattooService: TattoosService) { 
 
     let self = this;
@@ -19,10 +21,10 @@ export class TattoosListComponent implements OnInit {
   }
 
   getData() { 
-    this.tattooService.getAll().subscribe( (data) => { 
+    this.tattooService.getAll().subscribe( (data: any) => { 
       this.tattoos = data
       console.log(this.tattoos)
-      return this.tattoos;
+      return this.tattoos as [];
     }, (error) => { 
       console.log('error' + error)
     });
@@ -30,7 +32,7 @@ export class TattoosListComponent implements OnInit {
 
   deleteTattoo(id: any) { 
     console.log( 'suppression id : ' + id)
-    this.tattooService.delete(id).subscribe((data: any) => { 
+    this.tattooService.delete(id).subscribe((data: any = []) => { 
       this.tattoos = data 
       return this.tattoos; 
     }, (error) => { 
