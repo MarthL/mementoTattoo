@@ -60,4 +60,4 @@ app.delete('/tattoos/:tattoosId', (req, res) => {
 
 app.post('/login', (req, res) => { 
     // silence is golden
-})
+});

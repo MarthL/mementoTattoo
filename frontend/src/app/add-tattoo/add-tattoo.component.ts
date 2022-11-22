@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TattoosService } from '../_services/tattoos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-tattoo',
@@ -33,6 +34,7 @@ export class AddTattooComponent implements OnInit {
       this.tattoo = data; 
       return this.tattoo
     })
+    Swal.fire({title: 'Good job', text: 'you just had the tattoo : ' + formValue.name, icon: 'success'})
   }
 
   
