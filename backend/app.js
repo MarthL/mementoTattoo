@@ -59,5 +59,8 @@ app.delete('/tattoos/:tattoosId', (req, res) => {
 });
 
 app.post('/login', (req, res) => { 
-    // silence is golden
+    console.log(req.params.email )
+    User.findOne({"email" : req.params.email, "password": req.params.password})
+        .then((data) => res.json(data))
+        .catch(error => res.json(error))
 });

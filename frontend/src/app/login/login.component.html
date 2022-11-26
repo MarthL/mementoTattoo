@@ -1,13 +1,13 @@
 <div class="container">
-    <form>
+    <form [formGroup]="formlogin" (ngSubmit)="sendForm()">
         <h1 class="h3 mb-3 fw-bold text-center text-white">Please sign in</h1>
 
         <div class="form-floating mt-5">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email">
           <label for="floatingInput" class="text-white">Email address</label>
         </div>
         <div class="form-floating mt-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password">
           <label for="floatingPassword" class="text-white">Password</label>
         </div>
 

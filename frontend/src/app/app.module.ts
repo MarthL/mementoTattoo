@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddTattooComponent } from './add-tattoo/add-tattoo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { EditTattooComponent } from './edit-tattoo/edit-tattoo.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     AddTattooComponent,
     LoginComponent,
+    EditTattooComponent,
   ],
   imports: [
     BrowserModule,
