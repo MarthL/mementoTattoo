@@ -30,7 +30,8 @@ Default value is localhost:xxxx
 
 - Authentication using JWT Token / Login
 - Searchbar with dynamic rendering matching words with input text
-- Install and testing with Cypress 
+- Install and testing with Cypress
+- Homepage with dynamic content, optimizing UI
 
     
 ## Badges
