@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { TattoosService } from '../_services/tattoos.service';
 
+
 @Component({
   selector: 'app-tattoos-list',
   templateUrl: './tattoos-list.component.html',
@@ -53,7 +54,6 @@ export class TattoosListComponent implements OnInit {
           Swal.fire('Tattoo has been deleted !', '', 'info')
           // And any other code that should run only after 5s
         }, 5000);
-        this.reloadPage()
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'success')
       } 
@@ -64,9 +64,6 @@ export class TattoosListComponent implements OnInit {
  
 
 
-  reloadPage(): void {
-    window.location.reload();
-  }
   
 
 }

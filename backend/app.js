@@ -59,8 +59,7 @@ app.delete('/tattoos/:tattoosId', (req, res) => {
 });
 
 app.post('/login', (req, res) => { 
-    console.log(req.params.email )
-    User.findOne({"email" : req.params.email, "password": req.params.password})
-        .then((data) => res.json(data))
-        .catch(error => res.json(error))
+    User.findOne({"email" : req.body.email, "password": req.body.password})
+        .then((data) => res.json(data) ) 
+        .catch(error => res.json(error) )
 });

@@ -11,6 +11,7 @@ import { AddTattooComponent } from './add-tattoo/add-tattoo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { EditTattooComponent } from './edit-tattoo/edit-tattoo.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,9 @@ import { EditTattooComponent } from './edit-tattoo/edit-tattoo.component';
     AppRoutingModule,
     CommonModule,     
     FormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
