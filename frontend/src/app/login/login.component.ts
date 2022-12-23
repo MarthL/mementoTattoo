@@ -13,12 +13,15 @@ export class LoginComponent implements OnInit {
   formGroup: FormGroup;
 
 
-  constructor( private authService: AuthServiceService) { 
-
+  constructor( private authService: AuthServiceService, private router: Router) { 
   }
 
   ngOnInit(): void {
-    this.initForm();
+    if(localStorage.getItem('email')) { 
+      this.router.navigate(['/tattoos'])
+    } else { 
+      this.initForm();
+    }
   }
 
   initForm(){
@@ -37,10 +40,11 @@ export class LoginComponent implements OnInit {
     if(this.formGroup.valid){
       this.authService.login(formValue)
         .subscribe((data) => {
-          debugger
           console.log(data)
         if(data !== null){
-          alert('IT WORKS  : ' + data.email)
+          // alert('IT WORKS  : ' + data.email)
+          localStorage.setItem('email', data.email)
+          this.reloadPage();
         } else { 
           alert('Echec : ' + data.email)
         }
