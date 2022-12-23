@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { EditTattooComponent } from './edit-tattoo/edit-tattoo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './_guard/auth.guard';
+import { SeeTattooComponent } from './see-tattoo/see-tattoo.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddTattooComponent,
     LoginComponent,
     EditTattooComponent,
+    SeeTattooComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

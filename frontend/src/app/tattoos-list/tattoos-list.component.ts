@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { TattoosService } from '../_services/tattoos.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class TattoosListComponent implements OnInit {
   public tattoos: any = [];
 
   
-  constructor(private tattooService: TattoosService) { 
+  constructor(private tattooService: TattoosService, private router: Router) { 
 
     let self = this;
   }
@@ -33,8 +34,6 @@ export class TattoosListComponent implements OnInit {
   }
 
   deleteTattoo(id: any) { 
-    console.log( 'suppression id : ' + id)
-
     Swal.fire({
       title: 'Are you sure you want to delete this tattoo ?',
       showDenyButton: true,
@@ -54,12 +53,11 @@ export class TattoosListComponent implements OnInit {
           Swal.fire('Tattoo has been deleted !', '', 'info')
           // And any other code that should run only after 5s
         }, 5000);
+        // this.router.navigate(['/tattoos'])
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'success')
       } 
     })
-
-
   }
  
 

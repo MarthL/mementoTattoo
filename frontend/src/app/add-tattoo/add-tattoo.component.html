@@ -1,9 +1,12 @@
 <div class="container">
     <form [formGroup]="myForm" (ngSubmit)="sendForm()">
-
-        <input type="text" placeholder="Tattoo name" formControlName="name">
-        <input type="text" placeholder="description" formControlName="description">
-
-        <input type="submit" placeholder="Envoyer">
+        <div class="form-floating mt-5">    
+            <input type="text" class="form-control" id="floatingInput" placeholder="Tattoo name" formControlName="name">
+            <label for="floatingInput" class="text-white">Name</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="description" formControlName="description">
+            <label for="floatingInput" class="text-white">Description</label>
+            
+            <input type="submit" class="form-control btn btn-primary" id="floatingInput" placeholder="Envoyer">
+        </div>
     </form>
 </div>

@@ -6,12 +6,15 @@ import { HomeComponent } from './home/home.component';
 import { AddTattooComponent } from './add-tattoo/add-tattoo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './_guard/auth.guard';
+import { SeeTattooComponent } from './see-tattoo/see-tattoo.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'tattoos', component: TattoosListComponent},
-  { path: 'tattoos/add', component: AddTattooComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'tattoos/add', component: AddTattooComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent},
+  {path : 'tattoos/:id', component: SeeTattooComponent}
 ];
 
 @NgModule({
