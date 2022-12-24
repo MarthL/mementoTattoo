@@ -5,6 +5,7 @@ const mongoose = require('./database/mongoose');
 const Tattoos = require('./database/models/tattoos');
 const User = require('./database/models/users');
 
+
 // enable CORS Cross Origin Request Security
 app.use((req, res, next) => { 
     res.header("Access-Control-Allow-Origin", "*");
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(3000, () => { 
     console.log("Server running on port 3000");
@@ -47,7 +49,7 @@ app.post("/tattoos", (req, res) => {
 });
 
 app.patch('/tattoos/:tattoosId', (req, res) => { 
-    Tattoos.findOneAndUpdate({_id: req.params.listId}, {$set: req.body})
+    Tattoos.findOneAndUpdate({_id: req.params.listId}, {$set: req.body}) 
         .then(data => res.json(data))
         .catch(error => res.json(error))
 });
