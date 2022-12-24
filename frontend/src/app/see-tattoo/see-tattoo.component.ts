@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
-import { Subscriber } from 'rxjs';
 import { TattoosService } from '../_services/tattoos.service';
 
 @Component({
