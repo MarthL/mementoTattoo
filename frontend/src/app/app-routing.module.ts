@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'tattoos/add', component: AddTattooComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent},
   {path : 'tattoos/:id', component: SeeTattooComponent},
-  {path: 'tattoos/edit/:id', component: EditTattooComponent},
+  {path: 'tattoos/edit/:id', component: EditTattooComponent, canActivate: [AuthGuard]},
   {path: 'contact', component: ContactComponent}
 ];
 
