@@ -33,7 +33,7 @@ app.get('/tattoos', (req, res, next) => {
     .catch(error => res.json(error))
 });
 
-app.get("/tattoos/:tattoosId", (req, res) => { 
+app.get("/tattoos/:tattoosId", (req, res) => {
     Tattoos.find({ _id: req.params.tattoosId})
     .then(data => res.json(data))
     .catch(error => res.json(error))
@@ -49,7 +49,7 @@ app.post("/tattoos", (req, res) => {
 });
 
 app.patch('/tattoos/:tattoosId', (req, res) => { 
-    Tattoos.findOneAndUpdate({_id: req.params.listId}, {$set: req.body}) 
+    Tattoos.findOneAndUpdate({_id: req.params.tattoosId}, {$set: req.body}) 
         .then(data => res.json(data))
         .catch(error => res.json(error))
 });

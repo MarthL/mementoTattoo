@@ -50,7 +50,6 @@ export class EditTattooComponent implements OnInit {
     const formValue = this.myForm.value 
     console.log(formValue)
     this.tattooService.patch(this.route.snapshot.params.id, formValue).subscribe((data)=> { 
-      alert(data) // null
       this.tattoo = data; 
       return this.tattoo
     })
