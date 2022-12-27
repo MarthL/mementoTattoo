@@ -9,6 +9,8 @@ The objective of this project is to provide a database of all the traditional U.
 
 I found that the old-school universe is particularly discreet about the meaning of different tattoos, We can see that some motives come up regularly and I find it really rewarding to allow people to discover the stories surrounding each of them. 
 
+![Stack](/frontend/src/app/assets/img/maxresdefault.jpg?raw=true)
+
 
 ## Authors
 
@@ -25,6 +27,15 @@ I found that the old-school universe is particularly discreet about the meaning 
 ```
 
 Default value is localhost:xxxx
+
+## To-Do List
+
+- Authentication using JWT Token / Login
+- Searchbar with dynamic rendering matching words with input text
+- Install and testing with Cypress
+- Homepage with dynamic content, optimizing UI
+- Edit tattoo and seeTattoo{id}
+
     
 ## Badges
 
