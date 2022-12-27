@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TattoosService } from '../_services/tattoos.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-tattoo',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTattooComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  myForm: FormGroup;
+  tattoo: any;
+
+
+  constructor(private fb: FormBuilder, private tattooService: TattoosService, private router: Router) {
+    let self = this
+
+    this.myForm = this.fb.group({
+      name: '',
+      description: ''
+    });
   }
 
+  ngOnInit() {
+  }
+
+  sendForm() { 
+    const formValue = this.myForm.value 
+    console.log(formValue)
+    this.tattooService.post('', formValue).subscribe((data)=> { 
+      this.tattoo = data; 
+      return this.tattoo
+    })
+    Swal.fire({title: 'Good job', text: 'you just had the tattoo : ' + formValue.name, icon: 'success'})
+    this.router.navigate(['/tattoos'])
+  }
+
+  
 }

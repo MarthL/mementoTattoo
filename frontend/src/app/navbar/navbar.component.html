@@ -1,9 +1,9 @@
-<nav class="navbar navbar-light mt-5 mb-5">
+<nav class="navbar navbar-dark mt-5 mb-5">
     <div class="container-fluid">
       <button class="navbar-toggler" (click)="toggleDisplay()" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" [class.changestyle]="check"></span>
+        <span class="navbar-toggler-icon custom" [class.changestyle]="check"></span>
       </button>
-      <a class="navbar-brand" href="#">Memento Tattoo</a>
+      <a class="navbar-brand text-white" href="#">Memento Tattoo</a>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngClass]="{'show': check === true}" >
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-3 pl-5">
           <li class="nav-item">
@@ -17,6 +17,9 @@
           </li>
           <li class="nav-item">
             <a routerLink='/contact' class="nav-link text-dark font-weight-bold" href="#">Contacts</a>
+          </li>
+          <li class="nav-item" *ngIf="isConnected">
+            <a (click)="logOutUser()" class="nav-link text-dark font-weight-bold" >Deconnexion</a>
           </li>
         </ul>
       </div>

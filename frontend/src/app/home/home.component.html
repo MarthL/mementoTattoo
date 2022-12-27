@@ -1,14 +1,79 @@
-<div class="d-flex h-100 text-center text-white bg-dark">
-    
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<main><app-carousel></app-carousel>
+<div class="container pt-5">
+  <app-last-content></app-last-content>
 
-    
-      <main class="px-3 border">
-        <h1> Réfèrencement de tatouages traditionnels.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead">
-          <a routerLink='/tattoos' class="btn btn-lg btn-secondary fw-bold border-white bg-white text-dark">Accéder à la liste</a>
-        </p>
-      </main>
+  <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5 text-white mt-5 features">
+    <div class="col d-flex flex-column align-items-start gap-2">
+      <h3 class="fw-bold">
+        API Provided to promote knowledge
+      </h3>
+      <p class="text-white">
+        Paragraph of text beneath the heading to explain the heading. We'll add
+        onto it with another sentence and probably just keep going until we run
+        out of words.
+      </p>
+      <a href="https://github.com/MarthL/mementoTattoo" class="btn btn-warning btn-lg mt-5">Become a contributor</a>
     </div>
+
+    <div class="col">
+      <div class="row row-cols-1 row-cols-sm-2 g-4">
+        <div class="col d-flex flex-column gap-2">
+          <div
+            class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+          >
+            <svg class="bi" width="1em" height="1em">
+              <use xlink:href="#collection"></use>
+            </svg>
+          </div>
+          <h4 class="fw-semibold mb-0 bg-dark">Featured title</h4>
+          <p>
+            Paragraph of text beneath the heading to explain the heading.
+          </p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <div
+            class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+          >
+            <svg class="bi" width="1em" height="1em">
+              <use xlink:href="#gear-fill"></use>
+            </svg>
+          </div>
+          <h4 class="fw-semibold mb-0 bg-dark">Featured title</h4>
+          <p>
+            Paragraph of text beneath the heading to explain the heading.
+          </p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <div
+            class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+          >
+            <svg class="bi" width="1em" height="1em">
+              <use xlink:href="#speedometer"></use>
+            </svg>
+          </div>
+          <h4 class="fw-semibold mb-0 bg-dark">Featured title</h4>
+          <p>
+            Paragraph of text beneath the heading to explain the heading.
+          </p>
+        </div>
+
+        <div class="col d-flex flex-column gap-2">
+          <div
+            class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3"
+          >
+            <svg class="bi" width="1em" height="1em">
+              <use xlink:href="#table"></use>
+            </svg>
+          </div>
+          <h4 class="fw-semibold mb-0 bg-dark">Featured title</h4>
+          <p>
+            Paragraph of text beneath the heading to explain the heading.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+</main>

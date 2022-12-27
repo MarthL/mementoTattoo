@@ -22,8 +22,8 @@ export class TattoosService {
     return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
   }
 
-  put(uri: String, payload: Object) { 
-    return this.http.put(`${this.ROOT_URL}/${uri}`, payload);
+  patch(uri: String, payload: Object) { 
+    return this.http.patch(`${this.ROOT_URL}/${uri}`, payload);
   }
 
   delete(uri: String) { 

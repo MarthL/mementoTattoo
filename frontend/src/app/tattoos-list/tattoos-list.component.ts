@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TattoosService } from '../tattoos.service';
+import Swal from 'sweetalert2';
+import { TattoosService } from '../_services/tattoos.service';
+import { Router } from '@angular/router';
+import { AuthGuard } from '../_guard/auth.guard';
+
 
 @Component({
   selector: 'app-tattoos-list',
@@ -8,8 +12,10 @@ import { TattoosService } from '../tattoos.service';
 })
 export class TattoosListComponent implements OnInit {
 
-  public tattoos:any = [];
-  constructor(private tattooService: TattoosService) { 
+  public tattoos: any = [];
+
+
+  constructor(private tattooService: TattoosService, private router: Router, private auth: AuthGuard) {
 
     let self = this;
   }
@@ -18,14 +24,50 @@ export class TattoosListComponent implements OnInit {
     this.getData();
   }
 
-  getData() { 
-    this.tattooService.getAll().subscribe( (data) => { 
+  getData() {
+    this.tattooService.getAll().subscribe((data: any) => {
       this.tattoos = data
-      return this.tattoos;
-    }, (error) => { 
+      console.log(this.tattoos)
+      return this.tattoos as [];
+    }, (error) => {
       console.log('error' + error)
     });
   }
-  
+
+  deleteTattoo(id: any) {
+    if (!this.router.navigateByUrl('tattoos/add')) {
+      Swal.fire('You need to be loggedin', '', 'info');
+      return false;
+    } else {
+      Swal.fire({
+        title: 'Are you sure you want to delete this tattoo ?',
+        showDenyButton: true,
+        confirmButtonText: 'Yep ! delete it',
+        denyButtonText: `No, I changed my mind...`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.tattooService.delete(id).subscribe((data: any = []) => {
+            this.tattoos = data
+            return this.tattoos;
+          }, (error) => {
+            console.log('error : ' + error)
+          })
+          setTimeout(() => {
+            console.log('sleep');
+            Swal.fire('Tattoo has been deleted !', '', 'info')
+            // And any other code that should run only after 5s
+          }, 5000);
+          // this.router.navigate(['/tattoos'])
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'success')
+        }
+      })
+    }
+  }
+
+
+
+
 
 }

@@ -2,13 +2,14 @@ const express = require('express');
 const app = express(); 
 const mongoose = require('./database/mongoose');
 
-const List = require('./database/models/list');
 const Tattoos = require('./database/models/tattoos');
+const User = require('./database/models/users');
+
 
 // enable CORS Cross Origin Request Security
 app.use((req, res, next) => { 
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH , DEL");
+    res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH , DELETE");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.listen(3000, () => { 
     console.log("Server running on port 3000");
@@ -31,13 +33,13 @@ app.get('/tattoos', (req, res, next) => {
     .catch(error => res.json(error))
 });
 
-app.get("/tattoos/:tattoosId", (req, res) => { 
+app.get("/tattoos/:tattoosId", (req, res) => {
     Tattoos.find({ _id: req.params.tattoosId})
     .then(data => res.json(data))
     .catch(error => res.json(error))
 })
 
-app.post("/", (req, res) => { 
+app.post("/tattoos", (req, res) => { 
     new Tattoos({ 
         'name': req.body.name,
         'description': req.body.description
@@ -47,13 +49,19 @@ app.post("/", (req, res) => {
 });
 
 app.patch('/tattoos/:tattoosId', (req, res) => { 
-    Tattoos.findOneAndUpdate({_id: req.params.listId}, {$set: req.body})
+    Tattoos.findOneAndUpdate({_id: req.params.tattoosId}, {$set: req.body}) 
         .then(data => res.json(data))
         .catch(error => res.json(error))
-})
+});
 
 app.delete('/tattoos/:tattoosId', (req, res) => { 
-    Tattoos.findOneAndDelete(req.params.tattoosId)
+    Tattoos.deleteOne({"_id": req.params.tattoosId})
         .then(data => res.json(data))
         .catch(error => res.json(error))
-})
+});
+
+app.post('/login', (req, res) => { 
+    User.findOne({"email" : req.body.email, "password": req.body.password})
+        .then((data) => res.json(data) ) 
+        .catch(error => res.json(error) )
+});

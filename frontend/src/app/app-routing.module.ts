@@ -4,17 +4,30 @@ import { TattoosListComponent } from './tattoos-list/tattoos-list.component';
 import { HttpClientModule }  from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AddTattooComponent } from './add-tattoo/add-tattoo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './_guard/auth.guard';
+import { SeeTattooComponent } from './see-tattoo/see-tattoo.component';
+import { ContactComponent } from './contact/contact.component';
+import { EditTattooComponent } from './edit-tattoo/edit-tattoo.component';
+import { LegalMentionsComponent } from './legal-mentions/legal-mentions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'tattoos', component: TattoosListComponent},
-  { path: 'tattoos/add', component: AddTattooComponent}
+  { path: 'tattoos/add', component: AddTattooComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent},
+  {path : 'tattoos/:id', component: SeeTattooComponent},
+  {path: 'tattoos/edit/:id', component: EditTattooComponent, canActivate: [AuthGuard]},
+  {path: 'contact', component: ContactComponent},
+  {path: 'legalMentions', component: LegalMentionsComponent}
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+
   ],
   exports: [RouterModule]
 })
