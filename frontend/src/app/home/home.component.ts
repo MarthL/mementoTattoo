@@ -16,17 +16,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getLast();
   }
 
-  getLast() { 
-    this.tattooService.getAll().subscribe((data: any) => { 
-      this.tattoos = data
-      return this.tattoos
-    }, (error) => { 
-      console.log('error : ' + error)
-    })
-  }
 
 
 

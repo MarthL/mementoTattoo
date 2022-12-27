@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './_guard/auth.guard';
 import { SeeTattooComponent } from './see-tattoo/see-tattoo.component';
 import { ContactComponent } from './contact/contact.component';
+import { LastContentComponent } from './last-content/last-content.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ContactComponent } from './contact/contact.component';
     EditTattooComponent,
     SeeTattooComponent,
     ContactComponent,
+    LastContentComponent,
   ],
   imports: [
     BrowserModule,
