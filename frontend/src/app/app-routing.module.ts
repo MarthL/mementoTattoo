@@ -10,6 +10,7 @@ import { AuthGuard } from './_guard/auth.guard';
 import { SeeTattooComponent } from './see-tattoo/see-tattoo.component';
 import { ContactComponent } from './contact/contact.component';
 import { EditTattooComponent } from './edit-tattoo/edit-tattoo.component';
+import { LegalMentionsComponent } from './legal-mentions/legal-mentions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   {path : 'tattoos/:id', component: SeeTattooComponent},
   {path: 'tattoos/edit/:id', component: EditTattooComponent, canActivate: [AuthGuard]},
-  {path: 'contact', component: ContactComponent}
+  {path: 'contact', component: ContactComponent},
+  {path: 'legalMentions', component: LegalMentionsComponent}
 ];
 
 @NgModule({

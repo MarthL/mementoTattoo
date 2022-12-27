@@ -17,6 +17,8 @@ import { SeeTattooComponent } from './see-tattoo/see-tattoo.component';
 import { ContactComponent } from './contact/contact.component';
 import { LastContentComponent } from './last-content/last-content.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { FooterComponent } from './footer/footer.component';
+import { LegalMentionsComponent } from './legal-mentions/legal-mentions.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     ContactComponent,
     LastContentComponent,
     CarouselComponent,
+    FooterComponent,
+    LegalMentionsComponent,
   ],
   imports: [
     BrowserModule,
