@@ -16,6 +16,7 @@ import { AuthGuard } from './_guard/auth.guard';
 import { SeeTattooComponent } from './see-tattoo/see-tattoo.component';
 import { ContactComponent } from './contact/contact.component';
 import { LastContentComponent } from './last-content/last-content.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LastContentComponent } from './last-content/last-content.component';
     SeeTattooComponent,
     ContactComponent,
     LastContentComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
