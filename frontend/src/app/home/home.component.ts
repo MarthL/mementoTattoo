@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TattoosService } from '../_services/tattoos.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  tattoos: any = [];
 
-  ngOnInit(): void {
+  constructor( private tattooService: TattoosService, private router: Router) {
   }
 
-}
+  ngOnInit(): void {
+    this.getLast();
+  }
+
+  getLast() { 
+    this.tattooService.getAll().subscribe((data: any) => { 
+      this.tattoos = data
+      return this.tattoos
+    }, (error) => { 
+      console.log('error : ' + error)
+    })
+  }
+
+
+
+
+} 
+
+
+
+  // // click and modify the underlined values
+  // easeImage() { 
+  //   debugger
+  //   gsap.to(this.tattooArm, { duration: 2.5, ease: "back.out(1.7)", y: -500 });
+  // }
+
