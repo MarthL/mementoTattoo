@@ -4,17 +4,10 @@
   
   <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
     <div *ngFor="let tattoo of tattoos.slice(0,3); let i = index;" class="col mt-5">
-      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('/assets/img/pexels-adrian-boustead-955938.jpg'); border-radius: 30px;">
+      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('{{tattoo.img}}'); border-radius: 30px; background-position: center center; background-size: contain; font-family: Playfair;">
         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{tattoo.name}}</h3>
+          <h3 class="mb-4 display-6 lh-1 fw-bold text-white text-center font-weight-bold bg-dark">{{tattoo.name}}</h3>
           <ul class="d-flex list-unstyled mt-auto">
-            <li class="me-auto">
-              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-            </li>
-            <li class="d-flex align-items-center me-3">
-              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-              <small>{{tattoo.description | slice:0:10 }}...</small>
-            </li>
             <li class="d-flex align-items-center">
               <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
               <small>3d</small>
@@ -29,6 +22,6 @@
 
   <div class="row">
     <div class="col-10"></div>
-    <div class="col-2"> <a routerLink="/tattoos" class="btn btn-lg btn-primary fw-bold bg-primary text-white">See all tattoos</a> </div>
+    <div class="col-2"> <a routerLink="/tattoos" class="btn btn-lg btn-info fw-bold text-white">See all tattoos</a> </div>
   </div>
   
