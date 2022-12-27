@@ -1,6 +1,14 @@
 <div class="container">
-    <h1> {{tattoo[0].name}} </h1>
-
-    <p> {{tattoo[0].description}} </p>
-
+<div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">{{tattoo[0].name}} <span class="text-muted"> Traditionnal Tattoo </span></h2>
+      <p class="lead">{{tattoo[0].description}} </p>
+    </div>
+    <div class="col-md-5">
+        <img src="{{tattoo[0].img}}" class="img-thumbnail" alt="">
+    </div>
+  </div>
+  <div>
+    <div class="btn btn-danger" routerLink="/tattoos">Back</div>
+  </div>
 </div>
