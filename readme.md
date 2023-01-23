@@ -34,7 +34,7 @@ Default value is localhost:xxxx
 - Searchbar with dynamic rendering matching words with input text
 - Install and testing with Cypress
 - Homepage with dynamic content, optimizing UI
-- Edit tattoo and seeTattoo{id}
+- I18n
 
     
 ## Badges
