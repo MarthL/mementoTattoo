@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="formGroup" (ngSubmit)="loginProcess()">
+    <form [formGroup]="formGroup" (ngSubmit)="loginProcess()" *ngIf="formGroup" >
         <h1 class="h3 mb-3 fw-bold text-center text-white">Please sign in</h1>
 
         <div class="form-floating mt-5">
