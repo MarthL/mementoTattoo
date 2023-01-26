@@ -18,10 +18,10 @@ export class AuthServiceService {
   }
 
   logout() { 
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
   check() { 
-    return localStorage.getItem('email');
+    return sessionStorage.getItem('auth-token');
   }
 }

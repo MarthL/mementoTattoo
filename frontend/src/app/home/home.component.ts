@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { TattoosService } from '../_services/tattoos.service';
 
 
@@ -16,6 +17,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(!sessionStorage.getItem('check')) { 
+      if(sessionStorage.getItem('auth-token').length > 0 ) { 
+        Swal.fire('You are now logged in !', '', 'success')
+        sessionStorage.setItem('check', 'true')
+        window.location.reload();
+      }
+    }
   }
 
 

@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { AuthServiceService } from '../_services/auth-service.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   formGroup: FormGroup;
 
 
-  constructor( private authService: AuthServiceService, private router: Router) { 
+  constructor( private authService: AuthServiceService, private router: Router, private tokenStorage: TokenStorageService) { 
   }
 
   ngOnInit(): void {
@@ -42,9 +43,12 @@ export class LoginComponent implements OnInit {
         .subscribe((data) => {
           console.log(data)
         if(data !== null){
-          // alert('IT WORKS  : ' + data.email)
-          localStorage.setItem('email', data.email)
-          this.reloadPage();
+          // adding some sht here 
+          this.tokenStorage.saveToken(data);
+          this.tokenStorage.saveUser(data);
+          console.log(this.tokenStorage.getToken());
+          // end 
+          this.router.navigate(['/'])
         } else { 
           alert('Echec : ' + data.email)
         }
