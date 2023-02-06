@@ -1,6 +1,9 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const app = express(); 
 const mongoose = require('./database/mongoose');
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const Tattoos = require('./database/models/tattoos');
 const User = require('./database/models/users');
@@ -60,8 +63,39 @@ app.delete('/tattoos/:tattoosId', (req, res) => {
         .catch(error => res.json(error))
 });
 
-app.post('/login', (req, res) => { 
-    User.findOne({"email" : req.body.email, "password": req.body.password})
-        .then((data) => res.json(data) ) 
-        .catch(error => res.json(error) )
-});
+app.post("/login", async (req, res) => {
+
+    try {
+      // Get user input
+      const { email, password } = req.body;
+  
+      // Validate user input
+      if (!(email && password)) {
+        res.status(400).send("All input is required");
+      }
+      // Validate if user exist in our database
+      const user = await User.findOne({ email })
+      if (user) {
+        (async () => { 
+            await bcrypt.compare(password, user.password)
+        })
+      }
+        // Create token
+        const token = jwt.sign(
+          { email: JSON.stringify(email) },
+          process.env.TOKEN_KEY,
+          {
+            expiresIn: "2h",
+          }
+        );
+  
+        // save user token
+        user.token = token;
+  
+        // user
+        res.status(200).json(user);
+    } catch (err) {
+      console.log(err);
+    }
+    // Our register logic ends here
+  });

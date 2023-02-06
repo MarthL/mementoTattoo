@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem('email')) { 
+    if(this.tokenStorage.getToken()) { 
       this.router.navigate(['/tattoos'])
     } else { 
       this.initForm();
