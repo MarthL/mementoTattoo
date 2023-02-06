@@ -93,7 +93,7 @@ app.post("/login", async (req, res) => {
         user.token = token;
   
         // user
-        res.status(200).json(user);
+        res.json(user.token)
     } catch (err) {
       console.log(err);
     }
