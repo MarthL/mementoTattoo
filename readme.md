@@ -32,7 +32,6 @@ Default value is localhost:xxxx
 
 ## To-Do List
 
-- Authentication using JWT Token / Login
 - Searchbar with dynamic rendering matching words with input text
 - Install and testing with Cypress
 - Homepage with dynamic content, optimizing UI
