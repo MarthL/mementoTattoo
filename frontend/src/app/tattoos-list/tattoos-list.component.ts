@@ -53,12 +53,17 @@ export class TattoosListComponent implements OnInit {
           }, (error) => {
             console.log('error : ' + error)
           })
-          setTimeout(() => {
-            console.log('sleep');
-            Swal.fire('Tattoo has been deleted !', '', 'info')
-            // And any other code that should run only after 5s
-          }, 5000);
-          // this.router.navigate(['/tattoos'])
+          console.log('sleep');
+          Swal.fire({
+            title: 'Tattoo has been deleted !', 
+            icon: 'info',
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if(result.isConfirmed) 
+              this.router.navigate(['/tattoos']
+              )
+            });
+          
         } else if (result.isDenied) {
           Swal.fire('Changes are not saved', '', 'success')
         }
