@@ -33,9 +33,8 @@ Default value is localhost:xxxx
 ## To-Do List
 
 - Searchbar with dynamic rendering matching words with input text
-- Install and testing with Cypress
-- Homepage with dynamic content, optimizing UI
 - I18n
+- Be able to add image on tattoos entity
 
     
 ## Badges
