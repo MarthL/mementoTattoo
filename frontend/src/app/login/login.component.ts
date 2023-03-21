@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   loginProcess() { 
     const formValue = this.formGroup.value
     if(this.formGroup.valid){
-      this.authService.login(formValue)
+      this.authService.login(formValue.email, formValue.password)
         .subscribe((data) => {
           console.log(data)
         if(data !== null){

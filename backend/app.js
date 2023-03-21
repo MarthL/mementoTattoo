@@ -74,7 +74,7 @@ app.post("/login", async (req, res) => {
         res.status(400).send("All input is required");
       }
       // Validate if user exist in our database
-      const user = await User.findOne({ email })
+      const user = await User.findOne({ email, password })
       if (user) {
         (async () => { 
             await bcrypt.compare(password, user.password)
