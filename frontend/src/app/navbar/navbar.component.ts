@@ -38,7 +38,6 @@ export class NavbarComponent implements OnInit {
   logOutUser(){
     this.authService.logout();
     this.isConnected = false;
-    this.reloadPage();
   }
 
   reloadPage(): void {

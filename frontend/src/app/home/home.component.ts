@@ -19,17 +19,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     if(!sessionStorage.getItem('check')) { 
       if(sessionStorage.getItem('auth-token').length > 0 ) { 
-        Swal.fire('You are now logged in !', '', 'success')
         sessionStorage.setItem('check', 'true')
-        window.location.reload();
       }
     }
   }
-
-
-
-
-
 } 
 
 

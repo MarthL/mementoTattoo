@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { AuthServiceService } from '../_services/auth-service.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +49,16 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveUser(data);
           console.log(this.tokenStorage.getToken());
           // end 
-          this.router.navigate(['/'])
+          Swal.fire({
+            title: 'Congratulations ! you are connected', 
+            icon: 'success',
+            confirmButtonText: 'Continue'
+          }).then((response) => { 
+            if(response.isConfirmed) { 
+              this.reloadPage();
+              this.router.navigate(['/'])
+            }
+          })
         } else { 
           alert('Echec : ' + data.email)
         }
