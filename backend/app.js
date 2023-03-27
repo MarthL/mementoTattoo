@@ -45,7 +45,8 @@ app.get("/tattoos/:tattoosId", (req, res) => {
 app.post("/tattoos", (req, res) => { 
     new Tattoos({ 
         'name': req.body.name,
-        'description': req.body.description
+        'description': req.body.description,
+        'img': req.body.img,
     }).save()
     .then(data => res.json(data))
     .catch(error => res.json(error))

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +18,21 @@ export class TattoosService {
     return this.http.get(`${this.ROOT_URL}/${uri}`);
   }
 
-  post(uri: String, payload: Object) { 
-    return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
+  post(uri: string, payload: any, options: any) {
+    const formData: FormData = new FormData();
+    for(const key in payload) {
+      if(key === "img") {
+        formData.append(key, payload[key], payload[key].name)
+      } else {
+        formData.append(key, payload[key]);
+      }
+    }
+    const httpHeaders = options;
+
+    return this.http.post(`${this.ROOT_URL}/${uri}`, formData, {
+      headers: httpHeaders,
+      observe: 'response'
+    });
   }
 
   patch(uri: String, payload: Object) { 
