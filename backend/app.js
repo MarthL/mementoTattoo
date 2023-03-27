@@ -3,7 +3,9 @@ const bcrypt = require('bcrypt');
 const app = express(); 
 const mongoose = require('./database/mongoose');
 const jwt = require("jsonwebtoken");
+const bodyParser = require('body-parser');
 require("dotenv").config();
+const multer = require('multer');
 
 const Tattoos = require('./database/models/tattoos');
 const User = require('./database/models/users');
@@ -17,14 +19,24 @@ app.use((req, res, next) => {
     next();
 });
 
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+const upload = multer({storage: storage});
 
 // localhost:3000 - backend api 
 
 //frontend - localhost:4200
 
-
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.listen(3000, () => { 
     console.log("Server running on port 3000");
@@ -42,14 +54,19 @@ app.get("/tattoos/:tattoosId", (req, res) => {
     .catch(error => res.json(error))
 })
 
-app.post("/tattoos", (req, res) => { 
-    new Tattoos({ 
-        'name': req.body.name,
-        'description': req.body.description,
-        'img': req.body.img,
-    }).save()
-    .then(data => res.json(data))
-    .catch(error => res.json(error))
+app.post("/tattoos", upload.single('img'), (req, res) => {
+  console.log(req.body)
+  new Tattoos({ 
+    'name': req.body.name,
+    'description': req.body.description,
+    'img': req.file.path,
+  }).save()
+  .then(data => res.json({
+    'name': data.name,
+    'description': data.description,
+    'img': data.img,
+  }))
+  .catch(error => res.json(error))
 });
 
 app.patch('/tattoos/:tattoosId', (req, res) => { 
@@ -65,7 +82,6 @@ app.delete('/tattoos/:tattoosId', (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-
     try {
       // Get user input
       const { email, password } = req.body;
@@ -100,3 +116,5 @@ app.post("/login", async (req, res) => {
     }
     // Our register logic ends here
   });
+
+module.exports = app;
