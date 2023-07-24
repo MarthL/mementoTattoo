@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TattoosService } from '../_services/tattoos.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';

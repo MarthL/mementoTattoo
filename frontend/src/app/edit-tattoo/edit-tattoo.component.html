@@ -1,13 +1,39 @@
 <p>edit-tattoo works!</p>
 
 <div class="container">
-    <form [formGroup]="myForm" (ngSubmit)="sendForm()">
-        <div class="form-floating mt-5">    
-            <input type="text" class="form-control" id="floatingInput" placeholder="" formControlName="name" [(ngModel)]="name" value="{{tattoo?.name}}"> 
-            <label for="floatingInput" class="text-white">Name</label> 
-            <input type="text" class="form-control" id="floatingInput" placeholder="" formControlName="description" [(ngModel)]="description" value="{{tattoo?.description}}">
-            <label for="floatingInput" class="text-white">Description</label>
-            <input type="submit" class="form-control btn btn-primary" id="floatingInput" placeholder="Envoyer">
-        </div>
-    </form>
+  <form [formGroup]="myForm" (ngSubmit)="sendForm()">
+    <div class="form-floating mt-5">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        formControlName="name"
+        [(ngModel)]="name"
+        value="{{ tattoo?.name }}"
+      />
+      <label for="floatingInput" class="text-white">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder=""
+        formControlName="description"
+        [(ngModel)]="description"
+        value="{{ tattoo?.description }}"
+      />
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        formControlName="image"
+      />
+      <label for="floatingInput" class="text-white">Description</label>
+      <input
+        type="submit"
+        class="form-control btn btn-primary"
+        id="floatingInput"
+        placeholder="Envoyer"
+      />
+    </div>
+  </form>
 </div>

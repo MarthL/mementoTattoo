@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TattoosService } from '../_services/tattoos.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,11 +16,13 @@ export class EditTattooComponent implements OnInit {
   description: any;
   name: any;
   myForm: FormGroup;
+  selectedImage: File;
 
   constructor(private tattooService: TattoosService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
     this.myForm = this.fb.group({
-      name: '',
-      description: ''
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      image: ['']
     });
   }
 
@@ -32,12 +34,19 @@ export class EditTattooComponent implements OnInit {
     this.getData(this.route.snapshot.params.id)
   }
 
+  onFileSelected(event: any) {
+    this.selectedImage = event.target.files[0];
+  }
+
+  getFileName(filePath: string): string {
+    return filePath.replace(/^.*\\/, '');
+  }
+
   getData(id: any) { 
     this.tattooService.get(id).subscribe((data: any) => { 
       this.tattoo = data;
       this.name = this.tattoo[0].name;
       this.description = this.tattoo[0].description;
-      // alert(this.tattoo[0].name)
       return this.tattoo;
     },
     (error) => { 
@@ -47,14 +56,25 @@ export class EditTattooComponent implements OnInit {
   }
 
   sendForm() { 
-    const formValue = this.myForm.value 
-    console.log(formValue)
-    this.tattooService.patch(this.route.snapshot.params.id, formValue).subscribe((data)=> { 
+    if (this.myForm.invalid) {
+      return;
+    }
+  
+    const formData = new FormData();
+  
+    formData.append('name', this.myForm.get('name').value);
+    formData.append('description', this.myForm.get('description').value);
+    if (this.selectedImage) {
+      formData.append('image', this.selectedImage, this.getFileName(this.selectedImage.name));
+    }
+  
+    this.tattooService.patch(this.route.snapshot.params.id, formData).subscribe((data) => { 
       this.tattoo = data; 
-      return this.tattoo
-    })
-    Swal.fire({title: 'Good job', text: 'you just edited the tattoo : ' + formValue.name, icon: 'success'})
-    this.router.navigate(['/tattoos'])
+      return this.tattoo;
+    });
+  
+    Swal.fire({title: 'Good job', text: 'you just edited the tattoo : ' + this.myForm.get('name').value, icon: 'success'});
+    this.router.navigate(['/tattoos']);
   }
 
 }
