@@ -19,7 +19,7 @@ export class TattoosService {
   }
 
   post(uri: String, payload: Object) { 
-    return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
+    return this.http.post(`${this.ROOT_URL}`, payload);
   }
 
   patch(uri: String, payload: Object) { 

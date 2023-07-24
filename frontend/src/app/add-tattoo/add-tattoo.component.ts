@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { TattoosService } from '../_services/tattoos.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -11,33 +11,52 @@ import Swal from 'sweetalert2';
 })
 export class AddTattooComponent implements OnInit {
 
-
   myForm: FormGroup;
   tattoo: any;
-
+  selectedImage: File;
 
   constructor(private fb: FormBuilder, private tattooService: TattoosService, private router: Router) {
-    let self = this
-
     this.myForm = this.fb.group({
-      name: '',
-      description: ''
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      image: ['']
     });
   }
 
   ngOnInit() {
   }
 
-  sendForm() { 
-    const formValue = this.myForm.value 
-    console.log(formValue)
-    this.tattooService.post('', formValue).subscribe((data)=> { 
-      this.tattoo = data; 
-      return this.tattoo
-    })
-    Swal.fire({title: 'Good job', text: 'you just had the tattoo : ' + formValue.name, icon: 'success'})
-    this.router.navigate(['/tattoos'])
+  onFileSelected(event: any) {
+    this.selectedImage = event.target.files[0];
   }
 
+  getFileName(filePath: string): string {
+    return filePath.replace(/^.*\\/, '');
+  }
+
+  sendForm() {
+    if (this.myForm.invalid) {
+      return;
+    }
   
+    const formValue = this.myForm.value;
+    const formData = new FormData();
+  
+    formData.append('name', formValue.name);
+    formData.append('description', formValue.description);
+    if (this.selectedImage) {
+      formData.append('image', this.selectedImage, this.getFileName(this.selectedImage.name));
+    }
+    
+    this.tattooService.post('', formData).subscribe(
+      (data) => { 
+        this.tattoo = data; 
+        Swal.fire({title: 'Good job', text: 'you just had the tattoo : ' + formValue.name, icon: 'success'});
+        this.router.navigate(['/tattoos']);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }
