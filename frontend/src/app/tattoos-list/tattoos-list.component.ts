@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { TattoosService } from '../_services/tattoos.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../_guard/auth.guard';
+import { AuthServiceService } from '../_services/auth-service.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class TattoosListComponent implements OnInit {
   public tattoos: any = [];
 
 
-  constructor(private tattooService: TattoosService, private router: Router, private auth: AuthGuard) {
+  constructor(private tattooService: TattoosService, private router: Router, private auth: AuthGuard, public authService: AuthServiceService) {
 
     let self = this;
   }
