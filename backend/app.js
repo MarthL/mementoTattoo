@@ -53,16 +53,20 @@ app.get("/tattoos/:tattoosId", (req, res) => {
 
 app.post("/tattoos", upload.single('image'), (req, res) => {
   const { name, description } = req.body;
-  const imagePath = req.file.originalname;
-  const fullImagePath = `assets/img/tattoos/${req.file.filename}`;
-
-  new Tattoos({ 
-    name: name,
-    description: description,
-    img: fullImagePath
-  }).save()
-  .then(data => res.json(data))
-  .catch(error => res.json(error))
+  if(req.file) {
+    const imagePath = req.file.originalname;
+    const fullImagePath = `assets/img/tattoos/${req.file.filename}`;
+  
+    new Tattoos({ 
+      name: name,
+      description: description,
+      img: fullImagePath
+    }).save()
+    .then(data => res.json(data))
+    .catch(error => res.json(error))
+  } else {
+    res.status(400).json({ error: 'No file uploaded' });
+  }
 });
 
 app.patch('/tattoos/:tattoosId', upload.single('image'), (req, res) => {

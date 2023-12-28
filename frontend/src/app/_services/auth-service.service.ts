@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthServiceService {
   readonly TOKEN_KEY;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.LOGIN_URL = 'http://localhost:3000/login';
+    this.LOGIN_URL = `${environment.apiUrl}/login`;
     this.TOKEN_KEY = 'auth-token';
   }
   

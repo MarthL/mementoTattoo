@@ -26,7 +26,7 @@ Node v16
   npm run build
 ```
 
-Default value is localhost:xxxx
+Default value is localhost:4200
 
 ## To-Do List
 
