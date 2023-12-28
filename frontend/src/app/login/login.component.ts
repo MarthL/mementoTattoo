@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { AuthServiceService } from '../_services/auth-service.service';
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
 
   constructor( private authService: AuthServiceService, private router: Router, private tokenStorage: TokenStorageService) { 
@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   initForm(){
-    this.formGroup = new FormGroup({
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+    this.formGroup = new UntypedFormGroup({
+      email: new UntypedFormControl('', [Validators.required]),
+      password: new UntypedFormControl('', [Validators.required])
     });
   }
 

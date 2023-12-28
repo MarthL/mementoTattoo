@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TattoosService } from '../_services/tattoos.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -11,11 +11,11 @@ import Swal from 'sweetalert2';
 })
 export class AddTattooComponent implements OnInit {
 
-  myForm: FormGroup;
+  myForm: UntypedFormGroup;
   tattoo: any;
   selectedImage: File;
 
-  constructor(private fb: FormBuilder, private tattooService: TattoosService, private router: Router) {
+  constructor(private fb: UntypedFormBuilder, private tattooService: TattoosService, private router: Router) {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
